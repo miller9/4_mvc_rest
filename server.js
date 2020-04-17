@@ -6,6 +6,9 @@ const Sequelize = require('sequelize');
 
 const app = express();
 
+// importar el Controlador
+const tasks = require('./controllers/tasks');
+
 // middleware para info del msn Http
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -16,7 +19,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 // });
 
 // Integrar el motor de vistas PUG con Express
-app.use('view engine','pug');
+app.set('view engine','pug');
+
+// crear ruta get que responda con funcion 'home'. Ruta: localhost:3000/tasks
+app.get('/tasks',tasks.home);
 
 // crear ruta POST para insertar datos en la tabla. ruta: 'http://localhost:3000/pendientes'
 // modificar Key + Value en Body de Postman (description=algo)
