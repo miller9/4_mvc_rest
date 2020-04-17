@@ -11,5 +11,8 @@ router.route('/tasks').get(TasksController.index).post(TasksController.create);
 // definir ruta GET para eventualmente crear un nuevo registro
 router.get('/tasks/new',TasksController.new);
 
+// Agrupar rutas - definir recurso. Identificador del recurso. (wildcard)
+router.route('/tasks/:id').get(TasksController.show); // :wildcard
+
 // montar grupo de rutas en el servidor principal
 module.exports = router;
