@@ -26,6 +26,15 @@ module.exports = {
       res.json(err);
     })
   },
+  update:function(req,res){
+    Task.update({description: req.body.description},{
+      where: {
+        id: req.params.id
+      }
+    }).then(function(response){
+      res.redirect('/tasks/'+req.params.id); //res.json(response);
+    })
+  },
   new: function(req,res){ // funcion para la ruta 'new'
     res.render('tasks/new'); // indicar la ruta de la vista
   }
