@@ -6,9 +6,7 @@ let TasksController = require('../controllers/tasks');
 let router = express.Router();
 
 // Definicion de rutas
-router.route('/tasks').get(function(req,res){
-  res.send('Hello world desde una subruta');
-}).post(TasksController.create);
+router.route('/tasks').get(TasksController.index).post(TasksController.create);
 
 // definir ruta GET para eventualmente crear un nuevo registro
 router.get('/tasks/new',TasksController.new);
