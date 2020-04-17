@@ -4,7 +4,9 @@ const Task = require('../models').Task; // import carpeta models (importar MODEL
 module.exports = {
   index: function(req,res){
     Task.findAll().then((tasks)=>{
-      res.json(tasks);
+      res.render('tasks/index',{ //res.json(tasks);
+        tasks: tasks
+      });
     })
   },
   create: function(req,res){
