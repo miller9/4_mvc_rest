@@ -9,14 +9,14 @@ const app = express();
 // middleware para info del msn Http
 app.use(bodyParser.urlencoded({extended: true}));
 
-// let db = new sqlite3.Database('proyecto-backend-db'); --> se reemplaza con el ORM sequelize
-
 // ORM sequelize, recibe de 3 a 4 args. (BD, user, pass)
-const sequelize = new Sequelize('proyecto-backend-db',null,null,{
-  dialect: 'sqlite', // especificar el motor de BDD para conecar con Sequelize
-  storage: './proyecto-backend-db'  // ruta al archivo que almacena BDD
-});
+// const sequelize = new Sequelize('4proyecto-backend-db',null,null,{
+//   dialect: 'sqlite', // especificar el motor de BDD para conecar con Sequelize
+//   storage: './4proyecto-backend-db'  // ruta al archivo que almacena BDD
+// });
 
+// Integrar el motor de vistas PUG con Express
+app.use('view engine','pug');
 
 // crear ruta POST para insertar datos en la tabla. ruta: 'http://localhost:3000/pendientes'
 // modificar Key + Value en Body de Postman (description=algo)
