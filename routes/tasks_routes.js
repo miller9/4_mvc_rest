@@ -15,7 +15,10 @@ router.get('/tasks/new',TasksController.new);
 router.get('/tasks/:id/edit',TasksController.edit);
 
 // Agrupar rutas - definir recurso. Identificador del recurso. (wildcard)
-router.route('/tasks/:id').get(TasksController.show).put(TasksController.update);
+router.route('/tasks/:id')
+.get(TasksController.show)
+.put(TasksController.update)
+.delete(TasksController.destroy);
 
 // montar grupo de rutas en el servidor principal
 module.exports = router;
