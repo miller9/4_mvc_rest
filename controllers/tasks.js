@@ -11,5 +11,8 @@ module.exports = {
       console.log(err);
       res.json(err);
     })
+  },
+  new: function(req,res){ // funcion para la ruta 'new'
+    res.render('tasks/new'); // indicar la ruta de la vista
   }
 };
