@@ -16,6 +16,13 @@ module.exports = {
       })
     })
   },
+  edit: function(req,res){
+    Task.findByPk(req.params.id).then(function(task){
+      res.render('tasks/edit',{
+        task: task
+      })
+    })
+  },
   create: function(req,res){
     Task.create({
       description: req.body.description
