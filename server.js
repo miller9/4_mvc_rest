@@ -10,6 +10,9 @@ const app = express();
 // importar rutas del archivo <tasks_routes.js>
 const tasksRoutes = require('./routes/tasks_routes');
 
+// importar rutas para registro  de <registrations_routes.js>
+const registrationsRoutes = require('./routes/registrations_routes');
+
 // middleware para info del msn Http
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -21,6 +24,9 @@ app.set('view engine','pug');
 
 // montar subruta en el servidor base con metodo "use"
 app.use(tasksRoutes);
+
+// montar subruta de registros
+app.use(registrationsRoutes);
 
 // POST http://localhost:3000/tasks/2?_method=PUT
 // POST http://localhost:3000/tasks/2?_method=DELETE
