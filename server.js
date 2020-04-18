@@ -4,6 +4,7 @@ const sqlite3 = require('sqlite3');
 const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const methodOverride = require('method-override');
+const session = require('express-session');
 
 const app = express();
 
@@ -24,6 +25,13 @@ app.use(methodOverride('_method'));
 
 // Integrar el motor de vistas PUG con Express
 app.set('view engine','pug');
+
+app.use(session({
+  secret: ['qwertyuiop12345','asdfghjkl67890'],
+  saveUninitialized: false,
+  resave: false
+}));
+
 
 // montar subruta en el servidor base con metodo "use"
 app.use(tasksRoutes);
