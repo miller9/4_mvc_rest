@@ -8,7 +8,9 @@ let RegistrationsController = require('../controllers/registrations');
 let router = express.Router();
 
 // definir rutas
-router.get('/signup',RegistrationsController.new) // mostrar form de registro
+router.get('/signup',RegistrationsController.new); // mostrar form de registro
+
+router.route('/users').post(RegistrationsController.create); // enlazar CREATE con ruta
 
 // exportar objeto "router"
 module.exports = router;
