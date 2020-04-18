@@ -18,6 +18,7 @@ const registrationsRoutes = require('./routes/registrations_routes');
 const sessionsRoutes = require('./routes/sessions_routes');
 
 const findUserMiddleware = require('./middlewares/find_user');
+const authUser = require('./middlewares/auth_user');
 
 // middleware para info del msn Http
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,6 +37,8 @@ app.use(session({
 
 
 app.use(findUserMiddleware);
+app.use(authUser);
+
 
 // montar subruta en el servidor base con metodo "use"
 app.use(tasksRoutes);
