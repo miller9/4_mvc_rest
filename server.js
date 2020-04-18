@@ -17,6 +17,8 @@ const registrationsRoutes = require('./routes/registrations_routes');
 
 const sessionsRoutes = require('./routes/sessions_routes');
 
+const findUserMiddleware = require('./middlewares/find_user');
+
 // middleware para info del msn Http
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -33,6 +35,8 @@ app.use(session({
 }));
 
 
+app.use(findUserMiddleware);
+
 // montar subruta en el servidor base con metodo "use"
 app.use(tasksRoutes);
 
@@ -44,6 +48,9 @@ app.use(sessionsRoutes);
 // POST http://localhost:3000/tasks/2?_method=PUT
 // POST http://localhost:3000/tasks/2?_method=DELETE
 
+app.get('/',function(req,res){
+  res.render('home',{user: req.user});
+})
 
 // puerto para escuchar
 app.listen(3000);
