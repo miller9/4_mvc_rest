@@ -13,6 +13,9 @@ const tasksRoutes = require('./routes/tasks_routes');
 // importar rutas para registro  de <registrations_routes.js>
 const registrationsRoutes = require('./routes/registrations_routes');
 
+
+const sessionsRoutes = require('./routes/sessions_routes');
+
 // middleware para info del msn Http
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -27,6 +30,8 @@ app.use(tasksRoutes);
 
 // montar subruta de registros
 app.use(registrationsRoutes);
+
+app.use(sessionsRoutes);
 
 // POST http://localhost:3000/tasks/2?_method=PUT
 // POST http://localhost:3000/tasks/2?_method=DELETE
